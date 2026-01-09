@@ -211,43 +211,55 @@ PROXIO_BRANDS: [
 
   // 页脚三列菜单组
   // 页脚菜单
-  PROXIO_FOOTER_LINKS: [
-    {
-      name: '',
-      menus: [
-        {
-          title: '',
-          href: ''
-        },
-        {
-          title: '',
-          href: ''
-        }
-      ]
-    },
-    {
-      name: '',
-      menus: [
-        { title: '', href: '' },
-        {
-          title: '',
-          href: ''
-        },
-        {
-          title: '',
-          href: ''
-        },
-        {
-          title: '',
-          href: ''
-        },
-        {
-          title: '',
-          href: ''
-        }
-      ]
-    }
-  ],
+PROXIO_FOOTER_LINKS: [
+  {
+    name: '技术分类',
+    menus: [
+      {
+        title: 'DevOps',
+        href: '/category/devops'
+      },
+      {
+        title: '云原生',
+        href: '/category/cloud-native'
+      },
+      {
+        title: '系统运维',
+        href: '/category/system-administration'
+      },
+      {
+        title: '自动化',
+        href: '/category/automation'
+      }
+    ]
+  },
+  {
+    name: '资源链接',
+    menus: [
+      {
+        title: '关于我',
+        href: '/about'
+      },
+      {
+        title: '作品集',
+        href: '/projects'
+      },
+      {
+        title: '联系方式',
+        href: '/contact'
+      },
+      {
+        title: '技术笔记',
+        href: '/tags'
+      },
+      {
+        title: '归档',
+        href: '/archive'
+      }
+    ]
+  }
+],
+
 
   PROXIO_FOOTER_BLOG_LATEST_TITLE: '最新文章',
 
