@@ -178,13 +178,13 @@ const CONFIG = {
   // 关于作者区块
   PROXIO_ABOUT_ENABLE: true, // 关于作者区块区块开关
   PROXIO_ABOUT_TITLE: '关于作者',
-  PROXIO_ABOUT_TEXT_1: 'I am an operations and maintenance engineer; I studied electrical automation in university.',
+  PROXIO_ABOUT_TEXT_1: '我是一名专注于运维与可靠性的工程师，拥有电气自动化及计算机科学的复合背景。在过去一年的工作中，我将扎实的工科基础与系统化思维，成功应用于现代运维工程领域，专注于构建高可用、自动化且高性能的技术架构。',
   PROXIO_ABOUT_TEXT_2:
-    'Building on a solid background in Electrical Engineering, I have transitioned my skills to DevOps and Site Reliability Engineering. I focus on creating resilient, automated, and high-performance systems that ensure stability and drive technological innovation.',
+    '我擅长从零到一搭建并优化复杂系统，技术栈覆盖Linux生态、云平台、自动化部署、容器化以及全链路监控与日志分析。在多个核心项目中，如基于Mediasoup的分布式视频会议平台升级、高可用内网服务架构搭建以及运维平台CI/CD自动化建设，我主导了关键技术组件的实施与优化，有效提升了系统的稳定性、安全性与运维效率。',
   PROXIO_ABOUT_PHOTO_URL: '/avatar.png',
   PROXIO_ABOUT_KEY_1: '经验年限',
   PROXIO_ABOUT_VAL_1: '1年+',
-  PROXIO_ABOUT_KEY_2: '',
+  PROXIO_ABOUT_KEY_2: '1',
   PROXIO_ABOUT_VAL_2: '',
   PROXIO_ABOUT_KEY_3: '',
   PROXIO_ABOUT_VAL_3: '',
@@ -195,7 +195,7 @@ const CONFIG = {
   PROXIO_ABOUT_BUTTON_TEXT: '',
 
   // 横向滚动文字
-  PROXIO_BRANDS_ENABLE: true, // 滚动文字
+  PROXIO_BRANDS_ENABLE: false, // 滚动文字
   PROXIO_BRANDS: [
     'Web Design',
     'Logo Design',
