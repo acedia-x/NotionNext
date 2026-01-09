@@ -249,12 +249,12 @@ PROXIO_FOOTER_LINKS: [
         href: '/contact'
       },
       {
-        title: '技术笔记',
-        href: '/tags'
-      },
-      {
         title: '归档',
         href: '/archive'
+      },
+      {
+        title: '',
+        href: ''
       }
     ]
   }
