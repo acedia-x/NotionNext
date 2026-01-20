@@ -58,6 +58,10 @@ module.exports = {
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_ID || '60198', // 对应歌单的 id
   MUSIC_PLAYER_METING_LRC_TYPE:
     process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_LRC_TYPE || '1', // 已废弃！！！可选值： 3 | 1 | 0（0：禁用 lrc 歌词，1：lrc 格式的字符串，3：lrc 文件 url）
+  MUSIC_PLAYER_METING_API:
+    process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_API || 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r', // MetingJS API 地址
+  MUSIC_PLAYER_METING_CDN_URL:
+    process.env.NEXT_PUBLIC_MUSIC_PLAYER_METING_CDN_URL || 'https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js', // MetingJS CDN 地址
 
   // 一个小插件展示你的facebook fan page~ @see https://tw.andys.pro/article/add-facebook-fanpage-notionnext
   FACEBOOK_PAGE_TITLE: process.env.NEXT_PUBLIC_FACEBOOK_PAGE_TITLE || null, // 邊欄 Facebook Page widget 的標題欄，填''則無標題欄 e.g FACEBOOK 粉絲團'

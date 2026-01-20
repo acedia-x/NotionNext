@@ -40,10 +40,14 @@ export const Hero = props => {
             src={bannerImage}
           />
         )}
-        <iframe
-          src={bannerIframe}
-          className='w-full absolute h-screen left-0 top-0 pointer-events-none'
-        />
+        {/* 横幅 iframe 背景（可选） */}
+        {bannerIframe && (
+          <iframe
+            src={bannerIframe}
+            loading='lazy'
+            className='w-full absolute h-screen left-0 top-0 pointer-events-none'
+          />
+        )}
         {/* 阴影遮罩 */}
         <div className='h-1/3 w-full absolute left-0 bottom-0 z-10'>
           <div
