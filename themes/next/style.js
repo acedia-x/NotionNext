@@ -28,6 +28,24 @@ const Style = () => {
         background-size: 100% 2px;
         color: #4e80ee;
       }
+      
+      // 解决白天模式文字不清晰问题
+      #theme-next {
+        color: #333; // 确保白天模式文字清晰可见
+      }
+      
+      .dark #theme-next {
+        color: #ddd; // 深色模式下使用浅色文字
+      }
+      
+      // 通用文字颜色设置
+      #theme-next * {
+        color: #333 !important;
+      }
+      
+      .dark #theme-next * {
+        color: #ddd !important;
+      }
     `}</style>
   )
 }
