@@ -29,22 +29,53 @@ const Style = () => {
         color: #4e80ee;
       }
       
-      // 解决白天模式文字不清晰问题
+      // 解决白天模式文字不清晰问题 - 更精确的选择器
       #theme-next {
-        color: #333; // 确保白天模式文字清晰可见
+        color: #262626; // 使用更深的颜色确保对比度
       }
       
       .dark #theme-next {
-        color: #ddd; // 深色模式下使用浅色文字
+        color: #e5e5e5; // 深色模式下使用较浅的颜色
       }
       
-      // 通用文字颜色设置
-      #theme-next * {
-        color: #333 !important;
+      // 特定元素颜色优化
+      #theme-next .title,
+      #theme-next h1,
+      #theme-next h2,
+      #theme-next h3,
+      #theme-next h4,
+      #theme-next h5,
+      #theme-next h6,
+      #theme-next .subtitle,
+      #theme-next .description {
+        color: #262626; // 标题和描述使用更深的颜色
       }
       
-      .dark #theme-next * {
-        color: #ddd !important;
+      .dark #theme-next .title,
+      .dark #theme-next h1,
+      .dark #theme-next h2,
+      .dark #theme-next h3,
+      .dark #theme-next h4,
+      .dark #theme-next h5,
+      .dark #theme-next h6,
+      .dark #theme-next .subtitle,
+      .dark #theme-next .description {
+        color: #e5e5e5; // 深色模式下使用较浅的颜色
+      }
+      
+      // 文本内容区域
+      #theme-next .content,
+      #theme-next p,
+      #theme-next span,
+      #theme-next div:not(.aplayer *) {
+        color: #404040; // 内容文字使用稍浅但依然清晰的颜色
+      }
+      
+      .dark #theme-next .content,
+      .dark #theme-next p,
+      .dark #theme-next span,
+      .dark #theme-next div:not(.aplayer *) {
+        color: #d4d4d4; // 深色模式下使用较浅的内容文字颜色
       }
     `}</style>
   )
