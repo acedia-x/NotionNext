@@ -3,6 +3,38 @@ import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import CONFIG from '../config'
 import SmartLink from '@/components/SmartLink'
+import { useState, useEffect } from 'react'
+
+/**
+ * 打字机效果组件
+ */
+const TypewriterText = ({ text, delay = 150 }) => {
+  const [displayedText, setDisplayedText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    // 确保 text 存在且为字符串
+    if (!text || typeof text !== 'string') {
+      return
+    }
+    
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex])
+        setCurrentIndex(prev => prev + 1)
+      }, delay)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [currentIndex, text, delay])
+
+  // 如果 text 不存在，直接返回空字符串
+  if (!text || typeof text !== 'string') {
+    return <span></span>
+  }
+  
+  return <span>{displayedText}</span>
+}
 
 /**
  * 英雄大图区块
@@ -28,6 +60,9 @@ export const Hero = props => {
     null,
     config
   )
+  const heroTitle1 = siteConfig('PROXIO_HERO_TITLE_1', null, config)
+  const heroTitle2 = siteConfig('PROXIO_HERO_TITLE_2', 'I am a slow walker, but I never walk backwards.', config)
+  
   return (
     <>
       {/* <!-- ====== Hero Section Start --> */}
@@ -52,19 +87,19 @@ export const Hero = props => {
         </div>
 
         {/* 文字标题等 */}
-        <div className='w-full absolute bottom-0 z-20 pb-15 dark:text-white'>
+        <div className='w-full absolute bottom-0 z-20 pb-15 text-white'>
           <div className='container -mx-4 flex flex-wrap items-center'>
             <div className='w-full px-4'>
               <div
                 className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center'
                 data-wow-delay='0.5s'>
-                {/* 主标题 */}
+                {/* 主标题 - 打字机效果 */}
                 <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]'>
-                  {siteConfig('PROXIO_HERO_TITLE_1', null, config)}
+                  <TypewriterText text={heroTitle1} delay={100} />
                 </h1>
-                {/* 次标题 */}
+                {/* 次标题 - 打字机效果 */}
                 <p className='mx-auto mb-9 max-w-[600px] text-base font-medium  sm:text-lg sm:leading-[1.44]'>
-                  {siteConfig('PROXIO_HERO_TITLE_2', 'I am a slow walker, but I never walk backwards.', config)}
+                  <TypewriterText text={heroTitle2} delay={100} />
                 </p>
                 {/* 按钮组 */}
                 <ul className='mb-10 flex flex-wrap items-center justify-center gap-5'>

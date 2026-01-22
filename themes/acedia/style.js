@@ -10,47 +10,47 @@ const Style = () => {
 
     // 底色
     body{
-        background-color: white;
+        background-color: #ffffff;
     }
     .dark body{
-        background-color: black;
+        background-color: #000000;
     }
 
-    #theme-proxio .bg-primary {
+    #theme-acedia .bg-primary {
         --tw-bg-opacity: 1;
         background-color: #121212;
     }
     
     @media (min-width: 540px) {
-        #theme-proxio .container {
+        #theme-acedia .container {
             max-width: 540px;
         }
     }
     @media (min-width: 720px) {
-        #theme-proxio .container {
+        #theme-acedia .container {
             max-width: 720px;
         }
     }
     
     @media (min-width: 960px) {
-        #theme-proxio .container {
+        #theme-acedia .container {
             max-width: 960px;
         }
     }
     @media (min-width: 1140px) {
-        #theme-proxio .container {
+        #theme-acedia .container {
             max-width: 1140px;
         }
     }
         
     @media (min-width: 1536px) {
-        #theme-proxio .container {
+        #theme-acedia .container {
             max-width: 1140px;
         }
     }
         
 
-    #theme-proxio .container {
+    #theme-acedia .container {
         width: 100%;
         margin-right: auto;
         margin-left: auto;
@@ -58,7 +58,7 @@ const Style = () => {
         padding-left: 16px;
     }
 
-  #theme-proxio .sticky{
+  #theme-acedia .sticky{
     position: fixed;
     z-index: 20;
     background-color: rgb(255 255 255 / 0.8);
@@ -74,58 +74,58 @@ const Style = () => {
     background-color: black!important;
  }
 
-  :is(.dark #theme-proxio .sticky){
+  :is(.dark #theme-acedia .sticky){
     background-color: rgb(17 25 40 / 0.8);
   }
   
-  #theme-proxio .sticky {
+  #theme-acedia .sticky {
     -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
     box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   }
   
-  #theme-proxio .sticky .navbar-logo{
+  #theme-acedia .sticky .navbar-logo{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
   
-  #theme-proxio .sticky #navbarToggler span{
+  #theme-acedia .sticky #navbarToggler span{
     --tw-bg-opacity: 1;
     background-color: rgb(17 25 40 / var(--tw-bg-opacity));
   }
   
-  :is(.dark #theme-proxio .sticky #navbarToggler span){
+  :is(.dark #theme-acedia .sticky #navbarToggler span){
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
   
-  #theme-proxio .sticky #navbarCollapse li > a{
+  #theme-acedia .sticky #navbarCollapse li > a{
     --tw-text-opacity: 1;
     color: rgb(17 25 40 / var(--tw-text-opacity));
   }
   
-  #theme-proxio .sticky #navbarCollapse li > a:hover{
+  #theme-acedia .sticky #navbarCollapse li > a:hover{
     --tw-text-opacity: 1;
     color: rgb(55 88 249 / var(--tw-text-opacity));
     opacity: 1;
   }
 
-  #theme-proxio .sticky #navbarCollapse li > button{
+  #theme-acedia .sticky #navbarCollapse li > button{
     --tw-text-opacity: 1;
     color: rgb(17 25 40 / var(--tw-text-opacity));
   }
   
-  :is(.dark #theme-proxio .sticky #navbarCollapse li > a){
+  :is(.dark #theme-acedia .sticky #navbarCollapse li > a){
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
   
-  :is(.dark #theme-proxio .sticky #navbarCollapse li > a:hover){
+  :is(.dark #theme-acedia .sticky #navbarCollapse li > a:hover){
     --tw-text-opacity: 1;
     color: rgb(55 88 249 / var(--tw-text-opacity));
   }
 
-  :is(.dark #theme-proxio .sticky #navbarCollapse li > button){
+  :is(.dark #theme-acedia .sticky #navbarCollapse li > button){
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
@@ -134,53 +134,53 @@ const Style = () => {
     opacity: 0.7;
   }
   
-  #theme-proxio .sticky #navbarCollapse li .ud-menu-scroll.active{
+  #theme-acedia .sticky #navbarCollapse li .ud-menu-scroll.active{
     --tw-text-opacity: 1;
     color: rgb(55 88 249 / var(--tw-text-opacity));
     opacity: 1;
   }
   
-  #theme-proxio .sticky .loginBtn{
+  #theme-acedia .sticky .loginBtn{
     --tw-text-opacity: 1;
     color: rgb(17 25 40 / var(--tw-text-opacity));
   }
   
-  #theme-proxio .sticky .loginBtn:hover{
+  #theme-acedia .sticky .loginBtn:hover{
     --tw-text-opacity: 1;
     color: rgb(55 88 249 / var(--tw-text-opacity));
     opacity: 1;
   }
   
-  :is(.dark #theme-proxio .sticky .loginBtn){
+  :is(.dark #theme-acedia .sticky .loginBtn){
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
   
-  :is(.dark #theme-proxio .sticky .loginBtn:hover){
+  :is(.dark #theme-acedia .sticky .loginBtn:hover){
     --tw-text-opacity: 1;
     color: rgb(55 88 249 / var(--tw-text-opacity));
   }
   
-  #theme-proxio .sticky .signUpBtn{
+  #theme-acedia .sticky .signUpBtn{
     --tw-bg-opacity: 1;
     background-color: rgb(55 88 249 / var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
   
-  #theme-proxio .sticky .signUpBtn:hover{
+  #theme-acedia .sticky .signUpBtn:hover{
     --tw-bg-opacity: 1;
     background-color: rgb(27 68 200 / var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
   
-  #theme-proxio .sticky #themeSwitcher ~ span{
+  #theme-acedia .sticky #themeSwitcher ~ span{
     --tw-text-opacity: 1;
     color: rgb(17 25 40 / var(--tw-text-opacity));
   }
   
-  :is(.dark #theme-proxio .sticky #themeSwitcher ~ span){
+  :is(.dark #theme-acedia .sticky #themeSwitcher ~ span){
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }

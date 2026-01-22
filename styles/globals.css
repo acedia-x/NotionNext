@@ -298,3 +298,46 @@ img {
   @keyframes l1 {
   0% {background-position: right}
 }
+
+/* MetingJS 歌词样式优化 */
+.aplayer {
+  border-radius: 8px;
+}
+
+.aplayer .aplayer-lrc {
+  margin: 0 !important;
+  padding: 15px 0 10px 0 !important;
+  text-align: center !important;
+}
+
+.aplayer .aplayer-lrc p {
+  font-size: 14px !important;
+  color: #666 !important;
+  line-height: 24px !important;
+  min-height: 24px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  color: #333 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 1px #fff !important;
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+}
+
+.dark .aplayer .aplayer-lrc p {
+  color: #aaa !important;
+}
+
+.dark .aplayer .aplayer-lrc p.aplayer-lrc-current {
+  color: #eee !important;
+  text-shadow: 0 0 1px #000 !important;
+}
+
+.aplayer .aplayer-lrc .aplayer-lrc-contents {
+  transition: transform 0.3s ease-out !important;
+}
