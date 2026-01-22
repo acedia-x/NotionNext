@@ -77,6 +77,12 @@ const Style = () => {
       .dark #theme-next div:not(.aplayer *) {
         color: #d4d4d4; // 深色模式下使用较浅的内容文字颜色
       }
+      
+      // 白天模式下也显示白色字体的特殊类
+      #theme-next .text-white-in-light,
+      #theme-next .text-white-in-light * {
+        color: white !important;
+      }
     `}</style>
   )
 }
