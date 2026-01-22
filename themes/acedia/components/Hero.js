@@ -11,26 +11,35 @@ import { useState, useEffect } from 'react'
 const TypewriterText = ({ text, delay = 150 }) => {
   const [displayedText, setDisplayedText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    // 确保 text 存在且为字符串
-    if (!text || typeof text !== 'string') {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted || !text || typeof text !== 'string') {
       return
     }
     
+    let timeoutId
     if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setDisplayedText(prev => prev + text[currentIndex])
         setCurrentIndex(prev => prev + 1)
       }, delay)
-
-      return () => clearTimeout(timeout)
     }
-  }, [currentIndex, text, delay])
 
-  // 如果 text 不存在，直接返回空字符串
-  if (!text || typeof text !== 'string') {
-    return <span></span>
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+    }
+  }, [currentIndex, text, delay, isMounted])
+
+  // 如果尚未挂载或 text 不存在，返回完整文本
+  if (!isMounted || !text || typeof text !== 'string') {
+    return <span>{text || ''}</span>
   }
   
   return <span>{displayedText}</span>
