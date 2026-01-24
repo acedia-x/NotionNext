@@ -4,7 +4,7 @@ import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { deepClone } from '@/lib/utils'
 import SmartLink from '@/components/SmartLink'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import CONFIG from '../config'
 
 /**
@@ -139,8 +139,22 @@ const GameItem = ({ item, isLargeCard }) => {
   const { title } = item
   const img = item.pageCoverThumbnail
   const [showType, setShowType] = useState('img') // img or video
+  const videoRef = useRef(null)
 
   const video = item?.ext?.video
+  
+  // 视频错误处理，当视频加载失败时回退到图片
+  const handleVideoError = () => {
+    setShowType('img')
+  }
+
+  // 当组件卸载或切换回图片模式时暂停视频
+  useEffect(() => {
+    if (showType === 'img' && videoRef.current) {
+      videoRef.current.pause()
+    }
+  }, [showType])
+
   return (
     <SmartLink
       title={title}
@@ -148,7 +162,9 @@ const GameItem = ({ item, isLargeCard }) => {
       className={`card-single ${isLargeCard ? 'h-80 ' : 'h-full text-xs'} w-full transition-all duration-200 shadow-md md:hover:scale-105 md:hover:shadow-lg relative rounded-lg overflow-hidden flex justify-center items-center
       group hover:border-purple-400`}
       onMouseOver={() => {
-        setShowType('video')
+        if (video) {
+          setShowType('video')
+        }
       }}
       onMouseOut={() => {
         setShowType('img')
@@ -161,13 +177,15 @@ const GameItem = ({ item, isLargeCard }) => {
         <div className='h-full w-full absolute bg-gradient-to-b from-transparent to-black'></div>
       </div>
 
-      {showType === 'video' && (
+      {showType === 'video' && video && (
         <video
+          ref={videoRef}
           className={`z-10 object-cover w-full ${isLargeCard ? 'h-80' : 'h-full'} absolute overflow-hidden`}
           loop='true'
           autoPlay
-          preload='none'>
-          <source src={video} type='video/mp4' />
+          muted
+          preload='metadata'>
+          <source src={video} type='video/mp4' onError={handleVideoError} />
         </video>
       )}
       <LazyImage

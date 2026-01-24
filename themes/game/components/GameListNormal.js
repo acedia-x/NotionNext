@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { deepClone } from '@/lib/utils'
 import SmartLink from '@/components/SmartLink'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 /**
  * 游戏列表- 关联游戏，在详情页展示
@@ -42,13 +42,28 @@ const GameItem = ({ item }) => {
   const { title } = item
   const img = item.pageCoverThumbnail
   const [showType, setShowType] = useState('img') // img or video
+  const videoRef = useRef(null)
   const video = item?.ext?.video
+
+  // 视频错误处理，当视频加载失败时回退到图片
+  const handleVideoError = () => {
+    setShowType('img')
+  }
+
+  // 当组件卸载或切换回图片模式时暂停视频
+  useEffect(() => {
+    if (showType === 'img' && videoRef.current) {
+      videoRef.current.pause()
+    }
+  }, [showType])
 
   return (
     <SmartLink
       href={`${item?.href}`}
       onMouseOver={() => {
-        setShowType('video')
+        if (video) {
+          setShowType('video')
+        }
       }}
       onMouseOut={() => {
         setShowType('img')
@@ -63,13 +78,15 @@ const GameItem = ({ item }) => {
         <div className='h-full w-full absolute bg-gradient-to-b from-transparent to-black'></div>
       </div>
 
-      {showType === 'video' && (
+      {showType === 'video' && video && (
         <video
+          ref={videoRef}
           className='z-10 object-cover w-auto h-28 absolute overflow-hidden'
           loop='true'
           autoPlay
-          preload='none'>
-          <source src={video} type='video/mp4' />
+          muted
+          preload='metadata'>
+          <source src={video} type='video/mp4' onError={handleVideoError} />
         </video>
       )}
       <img

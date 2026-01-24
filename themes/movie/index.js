@@ -248,9 +248,18 @@ const LayoutSlug = props => {
             } else {
               item.classList.remove('active')
               // 不活跃窗口暂停播放，仅支持notion上传视频、不支持外链
-              item.querySelectorAll('video')?.forEach(video => {
-                video.pause()
-              })
+              const videos = item.querySelectorAll('video')
+              if (videos) {
+                videos.forEach(video => {
+                  try {
+                    if (!video.paused) {
+                      video.pause()
+                    }
+                  } catch (e) {
+                    console.warn('视频暂停失败:', e.message)
+                  }
+                })
+              }
               // 外链通过设置src来实现视频暂停播放
               if (iframe) {
                 iframe.setAttribute('src', '')

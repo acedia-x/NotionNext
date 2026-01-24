@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 const Player = () => {
   const [player, setPlayer] = useState()
   const ref = useRef(null)
-  const lrcType = JSON.parse(siteConfig('MUSIC_PLAYER_LRC_TYPE'))
+  const lrcType = parseInt(siteConfig('MUSIC_PLAYER_LRC_TYPE')) || 3 // 确保默认值为3
   const playerVisible = JSON.parse(siteConfig('MUSIC_PLAYER_VISIBLE'))
   const autoPlay = JSON.parse(siteConfig('MUSIC_PLAYER_AUTO_PLAY'))
   const meting = JSON.parse(siteConfig('MUSIC_PLAYER_METING'))
@@ -43,7 +43,7 @@ const Player = () => {
         new window.APlayer({
           container: ref.current,
           fixed: true,
-          lrcType: lrcType,
+          lrcType: lrcType, // 使用数值型的lrcType
           autoplay: autoPlay,
           order: order,
           audio: audio

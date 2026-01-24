@@ -18,6 +18,11 @@ export default function ModalVideo({
   const [modalOpen, setModalOpen] = useState(false)
   const videoRef = useRef(null)
 
+  // 视频错误处理
+  const handleVideoError = () => {
+    console.error('视频加载失败')
+  }
+
   return (
         <div>
 
@@ -31,7 +36,6 @@ export default function ModalVideo({
                                 <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="hero-ill-a">
                                     <stop stopColor="#FFF" offset="0%" />
                                     <stop stopColor="#EAEAEA" offset="77.402%" />
-                                    <stop stopColor="#DFDFDF" offset="100%" />
                                 </linearGradient>
                                 <linearGradient x1="50%" y1="0%" x2="50%" y2="99.24%" id="hero-ill-b">
                                     <stop stopColor="#FFF" offset="0%" />
@@ -95,7 +99,7 @@ export default function ModalVideo({
                         <div className="max-w-6xl mx-auto h-full flex items-center">
                             <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
                                 {/* <video ref={videoRef} width={videoWidth} height={videoHeight} loop controls>
-                                <source src={video} type="video/mp4" />
+                                <source src={video} type="video/mp4" onError={handleVideoError} />
                                 Your browser does not support the video tag.
                                 </video> */}
                                 <div>
@@ -106,6 +110,7 @@ export default function ModalVideo({
                                         border="0"
                                         frameBorder="no"
                                         allowfullscreen="true"
+                                        onError={handleVideoError}
                                     ></iframe>
                                 </div>
 

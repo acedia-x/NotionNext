@@ -5,7 +5,7 @@
 import Loading from '@/components/Loading'
 import NotionPage from '@/components/NotionPage'
 import { siteConfig } from '@/lib/config'
-import { isBrowser } from '@/lib/utils'
+import { isBrowser, getListByPage } from '@/lib/utils'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { Career } from './components/Career'
@@ -43,6 +43,7 @@ import Lenis from '@/components/Lenis'
 import Announcement from './components/Announcement'
 import CursorDot from '@/components/CursorDot'
 import LoadingCover from './components/LoadingCover'
+import BlogListPage from './components/BlogListPage'
 
 /**
  * 布局框架
@@ -323,80 +324,40 @@ const Layout404 = props => {
  * 博客列表
  */
 const LayoutPostList = props => {
-    const { posts, category, tag } = props
-    const slotTitle = category || tag
+  const { posts = [], postCount } = props
+  const { locale } = useGlobal()
+  const router = useRouter()
+  const currentPage = parseInt(router.query.page) || 1
+  const POSTS_PER_PAGE = siteConfig('PROXIO_POSTS_PER_PAGE', 12, CONFIG)
 
-    return (
-        <>
-            {/* <!-- ====== Blog Section Start --> */}
-            <section className='bg-white pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]'>
-                <div className='container mx-auto'>
-                    {/* 区块标题文字 */}
-                    <div className='-mx-4 flex flex-wrap justify-center'>
-                        <div className='w-full px-4'>
-                            <div className='mx-auto mb-[60px] max-w-[485px] text-center'>
-                                {slotTitle && (
-                                    <h2 className='mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]'>
-                                        {slotTitle}
-                                    </h2>
-                                )}
+  return (
+    <>
+      {/* <!-- ====== Blog Section Start --> */}
+      <section className='bg-white pt-20 dark:bg-dark lg:pt-[120px]'>
+        <div className='container mx-auto'>
+          {/* 区块标题文字 */}
+          <div
+            className='-mx-4 flex flex-wrap justify-center wow fadeInUp'
+            data-wow-delay='.2s'>
+            <div className='w-full px-4 py-4'>
+              <div className='mx-auto max-w-[485px] text-center space-y-4'>
+                <span className='px-3 py-0.5 rounded-2xl mb-2 dark:bg-dark-1 border border-gray-200 dark:border-[#333333] dark:text-white'>
+                  {siteConfig('PROXIO_BLOG_TITLE')}
+                </span>
 
-                                {!slotTitle && (
-                                    <>
-                                        <span className='mb-2 block text-lg font-semibold text-primary'>
-                                            {siteConfig('PROXIO_BLOG_TITLE')}
-                                        </span>
-                                        <h2 className='mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]'>
-                                            {siteConfig('PROXIO_BLOG_TEXT_1')}
-                                        </h2>
-
-                                    </>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                    {/* 博客列表 此处优先展示4篇文章 */}
-                    <div className='-mx-4 flex flex-wrap'>
-                        {posts?.map((item, index) => {
-                            return (
-                                <div key={index} className='w-full px-4 md:w-1/2 lg:w-1/3'>
-                                    <div
-                                        className='wow fadeInUp group mb-10'
-                                        data-wow-delay='.1s'>
-                                        <div className='mb-8 overflow-hidden rounded-[5px]'>
-                                            <SmartLink href={item?.href} className='block'>
-                                                <img
-                                                    src={item.pageCoverThumbnail}
-                                                    alt={item.title}
-                                                    className='w-full transition group-hover:rotate-6 group-hover:scale-125'
-                                                />
-                                            </SmartLink>
-                                        </div>
-                                        <div>
-                                            <span className='mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white'>
-                                                {item.publishDay}
-                                            </span>
-                                            <h3>
-                                                <SmartLink
-                                                    href={item?.href}
-                                                    className='mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl'>
-                                                    {item.title}
-                                                </SmartLink>
-                                            </h3>
-                                            <p className='max-w-[370px] text-base text-body-color dark:text-dark-6'>
-                                                {item.summary}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-            </section>
-            {/* <!-- ====== Blog Section End --> */}
-        </>
-    )
+                <h2 className='text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]'>
+                  {siteConfig('PROXIO_BLOG_TEXT_1')}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <!-- ====== Blog Section End --> */}
+      
+      <BlogListPage page={currentPage} posts={posts} postCount={postCount} />
+    </>
+  )
 }
 /**
  * 分类列表
