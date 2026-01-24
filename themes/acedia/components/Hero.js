@@ -69,6 +69,9 @@ export const Hero = props => {
     null,
     config
   )
+  
+  // 使用GREETING_WORDS配置作为主要打字内容，如果未配置则使用英雄区标题
+  const greetingWords = siteConfig('GREETING_WORDS')?.split(',') || []
   const heroTitle1 = siteConfig('PROXIO_HERO_TITLE_1', null, config)
   const heroTitle2 = siteConfig('PROXIO_HERO_TITLE_2', 'I am a slow walker, but I never walk backwards.', config)
   
@@ -96,7 +99,7 @@ export const Hero = props => {
         </div>
 
         {/* 文字标题等 */}
-        <div className='w-full absolute bottom-0 z-20 pb-15 text-white'>
+        <div className='w-full absolute bottom-0 z-20 pb-15 text-white text-white-in-light'>
           <div className='container -mx-4 flex flex-wrap items-center'>
             <div className='w-full px-4'>
               <div

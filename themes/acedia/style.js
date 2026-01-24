@@ -21,6 +21,15 @@ const Style = () => {
         background-color: #121212;
     }
     
+    /* 白天模式下显示白色文字 */
+    #theme-acedia .text-white-in-light {
+        @apply text-white;
+    }
+    
+    #theme-acedia .text-white-in-light * {
+        @apply text-white;
+    }
+    
     @media (min-width: 540px) {
         #theme-acedia .container {
             max-width: 540px;
