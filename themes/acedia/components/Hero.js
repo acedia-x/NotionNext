@@ -123,10 +123,10 @@ export const Hero = props => {
           />
         </div>
 
-        {/* 文字内容 - 直接覆盖在图片上 */}
-        <div className='w-full absolute bottom-0 z-20 pb-15 text-white'>
-          <div className='container -mx-4 flex flex-wrap items-center'>
-            <div className='w-full px-4'>
+        {/* 文字内容 - 直接覆盖在图片上并居中显示 */}
+        <div className='w-full absolute bottom-0 z-20 pb-15 text-white flex justify-center items-center'>
+          <div className='container px-4'>
+            <div className='w-full'>
               <div
                 className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center'
                 data-wow-delay='0.5s'>
