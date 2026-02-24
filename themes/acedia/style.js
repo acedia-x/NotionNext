@@ -23,6 +23,38 @@ const Style = () => {
         transition: background-color 0.3s ease;
     }
     
+    // 打字机效果样式
+    #theme-acedia .typewriter-fallback {
+      opacity: 0.8;
+    }
+    
+    #theme-acedia .typewriter-active {
+      display: inline-block;
+      min-height: 1em;
+    }
+    
+    #theme-acedia .cursor-blink {
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    // 确保英雄区文字居中
+    #theme-acedia .hero-content {
+      text-align: center;
+    }
+    
+    #theme-acedia .hero-content h1,
+    #theme-acedia .hero-content p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
     /* 白天模式下显示白色文字 */
     #theme-acedia .text-white-in-light {
         @apply text-white;

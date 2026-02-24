@@ -13,23 +13,35 @@ const TypewriterText = ({ text, delay = 150 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
 
+  // 客户端挂载检测
   useEffect(() => {
-    // 确保在客户端才设置 mounted 状态
     if (typeof window !== 'undefined') {
       setIsMounted(true)
     }
   }, [])
 
+  // 打字机效果逻辑
   useEffect(() => {
-    // SSR 安全检查
-    if (typeof window === 'undefined' || !isMounted || !text || typeof text !== 'string') {
+    // SSR 安全检查和初始文本设置
+    if (typeof window === 'undefined') {
       return
     }
     
+    if (!isMounted) {
+      // 客户端挂载后立即显示完整文本作为 fallback
+      setDisplayedText(text || '')
+      return
+    }
+    
+    // 重置状态当文本改变时
+    if (currentIndex === 0 && text) {
+      setDisplayedText('')
+    }
+    
     let timeoutId
-    if (currentIndex < text.length) {
+    if (text && currentIndex < text.length) {
       timeoutId = setTimeout(() => {
-        setDisplayedText(prev => prev + text[currentIndex])
+        setDisplayedText(prev => prev + (text[currentIndex] || ''))
         setCurrentIndex(prev => prev + 1)
       }, delay)
     }
@@ -41,12 +53,20 @@ const TypewriterText = ({ text, delay = 150 }) => {
     }
   }, [currentIndex, text, delay, isMounted])
 
-  // 如果尚未挂载或 text 不存在，返回完整文本
-  if (!isMounted || !text || typeof text !== 'string') {
-    return <span>{text || ''}</span>
+  // 服务端渲染或未挂载时的 fallback
+  if (typeof window === 'undefined' || !isMounted) {
+    return <span className="typewriter-fallback">{text || ''}</span>
   }
   
-  return <span>{displayedText}</span>
+  // 客户端渲染时的打字机效果
+  return (
+    <span className="typewriter-active">
+      {displayedText}
+      {currentIndex < (text?.length || 0) && (
+        <span className="cursor-blink">|</span>
+      )}
+    </span>
+  )
 }
 
 /**
@@ -110,11 +130,11 @@ export const Hero = props => {
                 className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center'
                 data-wow-delay='0.5s'>
                 {/* 主标题 - 打字机效果 */}
-                <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]'>
+                <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2] text-center'>
                   <TypewriterText text={heroTitle1} delay={100} />
                 </h1>
                 {/* 次标题 - 打字机效果 */}
-                <p className='mx-auto mb-9 max-w-[600px] text-base font-medium  sm:text-lg sm:leading-[1.44]'>
+                <p className='mx-auto mb-9 max-w-[600px] text-base font-medium sm:text-lg sm:leading-[1.44] text-center'>
                   <TypewriterText text={heroTitle2} delay={100} />
                 </p>
                 {/* 按钮组 */}
