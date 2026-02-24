@@ -123,18 +123,21 @@ export const Hero = props => {
         </div>
 
         {/* 文字标题等 */}
-        <div className='w-full absolute bottom-0 z-20 pb-15 text-white text-white-in-light'>
-          <div className='container -mx-4 flex flex-wrap items-center'>
-            <div className='w-full px-4'>
+        <div className='w-full absolute bottom-0 z-20 pb-15 text-white text-white-in-light flex items-center justify-center h-full'>
+          <div className='container -mx-4 flex flex-wrap items-center justify-center h-full'>
+            <div className='w-full px-4 flex items-center justify-center h-full'>
               <div
-                className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center'
-                data-wow-delay='0.5s'>
+                className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center flex flex-col items-center justify-center'
+                data-wow-delay='0.5s'
+                style={{ textAlign: 'center' }}>
                 {/* 主标题 - 打字机效果 */}
-                <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2] text-center'>
+                <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2] text-center w-full' 
+                    style={{ textAlign: 'center' }}>
                   <TypewriterText text={heroTitle1} delay={100} />
                 </h1>
                 {/* 次标题 - 打字机效果 */}
-                <p className='mx-auto mb-9 max-w-[600px] text-base font-medium sm:text-lg sm:leading-[1.44] text-center'>
+                <p className='mx-auto mb-9 max-w-[600px] text-base font-medium sm:text-lg sm:leading-[1.44] text-center w-full'
+                   style={{ textAlign: 'center' }}>
                   <TypewriterText text={heroTitle2} delay={100} />
                 </p>
                 {/* 按钮组 */}
