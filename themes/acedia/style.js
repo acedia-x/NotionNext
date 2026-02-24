@@ -11,6 +11,7 @@ const Style = () => {
     // 底色
     body{
         background-color: #ffffff;
+        transition: background-color 0.3s ease;
     }
     .dark body{
         background-color: #000000;
@@ -19,6 +20,7 @@ const Style = () => {
     #theme-acedia .bg-primary {
         --tw-bg-opacity: 1;
         background-color: #121212;
+        transition: background-color 0.3s ease;
     }
     
     /* 白天模式下显示白色文字 */

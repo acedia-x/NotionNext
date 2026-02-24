@@ -14,11 +14,15 @@ const TypewriterText = ({ text, delay = 150 }) => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
+    // 确保在客户端才设置 mounted 状态
+    if (typeof window !== 'undefined') {
+      setIsMounted(true)
+    }
   }, [])
 
   useEffect(() => {
-    if (!isMounted || !text || typeof text !== 'string') {
+    // SSR 安全检查
+    if (typeof window === 'undefined' || !isMounted || !text || typeof text !== 'string') {
       return
     }
     

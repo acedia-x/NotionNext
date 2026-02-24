@@ -17,16 +17,16 @@ export const Blog = ({ posts }) => {
   // 博客列表默认显示summary文字，当鼠标指向时显示文章封面。这里可选把summary文字替换成图片占位符。
   const PROXIO_BLOG_PLACEHOLDER_IMG_URL_1 = siteConfig(
     'PROXIO_BLOG_PLACEHOLDER_IMG_URL_1'
-  )
+  ) || ''
   const PROXIO_BLOG_PLACEHOLDER_IMG_URL_2 = siteConfig(
     'PROXIO_BLOG_PLACEHOLDER_IMG_URL_2'
-  )
+  ) || ''
   const PROXIO_BLOG_PLACEHOLDER_IMG_URL_3 = siteConfig(
     'PROXIO_BLOG_PLACEHOLDER_IMG_URL_3'
-  )
+  ) || ''
   const PROXIO_BLOG_PLACEHOLDER_IMG_URL_4 = siteConfig(
     'PROXIO_BLOG_PLACEHOLDER_IMG_URL_4'
-  )
+  ) || ''
 
   return (
     <>
@@ -69,12 +69,12 @@ export const Blog = ({ posts }) => {
                     className='wow fadeInUp group mb-10 relative overflow-hidden blog'
                     data-wow-delay='.1s'>
                     <div className='relative rounded-xl border overflow-hidden shadow-md dark:border-gray-700 dark:bg-gray-800'>
-                      <SmartLink href={item?.href} className='block'>
-                        {item.pageCoverThumbnail && (
+                      <SmartLink href={item?.href || '#'} className='block'>
+                        {item?.pageCoverThumbnail && (
                           // 图片半透明
                           <LazyImage
                             src={item.pageCoverThumbnail}
-                            alt={item.title}
+                            alt={item.title || '文章封面'}
                             className='w-full h-80 object-cover transition-transform duration-500 rounded-xl'
                           />
                         )}
@@ -97,13 +97,13 @@ export const Blog = ({ posts }) => {
                     {/* 内容部分 */}
                     <div className='relative z-10 p-4'>
                       <span className='inline-blocktext-center text-xs font-medium leading-loose text-white'>
-                        {item.publishDay}
+                        {item?.publishDay || '未知日期'}
                       </span>
                       <h3>
                         <SmartLink
-                          href={item?.href}
+                          href={item?.href || '#'}
                           className='mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl'>
-                          {item.title}
+                          {item?.title || '无标题'}
                         </SmartLink>
                       </h3>
                     </div>

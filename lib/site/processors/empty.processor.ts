@@ -7,7 +7,7 @@ export function EmptyData(pageId?: string): SiteData {
     siteInfo: {
       title: 'NotionNext BLOG',
       description: '无法获取 Notion 数据',
-      pageCover: '/bg_image.jpg',
+      pageCover: '/web.jpg',
       icon: '/avatar.svg',
       link: BLOG.LINK
     },

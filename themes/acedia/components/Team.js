@@ -7,8 +7,15 @@ import SmartLink from '@/components/SmartLink'
  * @returns 
  */
 export const Team = () => {
-    const PROXIO_ABOUT_PHOTO_URL = siteConfig('PROXIO_ABOUT_PHOTO_URL')
-    const AUTHOR = siteConfig('AUTHOR')
+    const PROXIO_ABOUT_PHOTO_URL = siteConfig('PROXIO_ABOUT_PHOTO_URL') || '/avatar.png'
+    const AUTHOR = siteConfig('AUTHOR') || '作者'
+
+    // 安全获取配置值
+    const getTitle = () => siteConfig('PROXIO_ABOUT_TITLE') || '关于我们'
+    const getText1 = () => siteConfig('PROXIO_ABOUT_TEXT_1') || '暂无介绍'
+    const getText2 = () => siteConfig('PROXIO_ABOUT_TEXT_2') || ''
+    const getButtonUrl = () => siteConfig('PROXIO_ABOUT_BUTTON_URL', '') || '#'
+    const getButtonText = () => siteConfig('PROXIO_ABOUT_BUTTON_TEXT') || '了解更多'
 
     return (
         <>
@@ -26,15 +33,15 @@ export const Team = () => {
                         <div className='flex flex-col px-4 space-y-4 mx-auto justify-between max-w-[485px]'>
                             <div>
                                 <span className='px-3 py-0.5 mb-2 dark:bg-dark-1 rounded-2xl border border-gray-200 dark:border-[#333333] dark:text-white'>
-                                    {siteConfig('PROXIO_ABOUT_TITLE')}
+                                    {getTitle()}
                                 </span>
                             </div>
                             <h2 className='mb-3 text-xl md:text-3xl leading-[1.2] dark:text-white '>
-                                {siteConfig('PROXIO_ABOUT_TEXT_1')}
+                                {getText1()}
                             </h2>
                             <p
                                 dangerouslySetInnerHTML={{
-                                    __html: siteConfig('PROXIO_ABOUT_TEXT_2')
+                                    __html: getText2()
                                 }}
                                 className='text-base text-body-color dark:text-dark-6'></p>
                             {/* 数值四宫格 */}
@@ -47,9 +54,9 @@ export const Team = () => {
 
                             <div className='mt-8 w-full flex justify-end py-2'>
                                 <SmartLink
-                                    href={siteConfig('PROXIO_ABOUT_BUTTON_URL', '')}
+                                    href={getButtonUrl()}
                                     className='px-4 py-2 rounded-3xl border dark:border-gray-200 border-[#333333] text-base font-medium text-dark hover:bg-gray-100 dark:text-white dark:hover:bg-white dark:hover:text-black duration-200'>
-                                    {siteConfig('PROXIO_ABOUT_BUTTON_TEXT')}
+                                    {getButtonText()}
                                     <i className="pl-4 fa-solid fa-arrow-right"></i>
                                 </SmartLink>
                             </div>
@@ -64,13 +71,14 @@ export const Team = () => {
 
 // 显示一组键值对
 const KeyVal = ({ k, v }) => {
-    if (!k) {
+    // 空值安全检查
+    if (!k || k.trim() === '') {
         return null;
     }
     return (
         <div className='space-y-2'>
             <div className='dark:text-dark-6'>{k}</div>
-            <div className='dark:text-white text-2xl font-semibold'>{v}</div>
+            <div className='dark:text-white text-2xl font-semibold'>{v || '--'}</div>
         </div>
     )
 }
