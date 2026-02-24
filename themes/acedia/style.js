@@ -43,10 +43,11 @@ const Style = () => {
       50% { opacity: 0; }
     }
     
-    // 英雄区内容正常布局样式
+    // 英雄区内容居中对齐样式
     #theme-acedia .hero-content {
       display: flex;
       flex-direction: column;
+      text-align: center;
     }
     
     #theme-acedia .hero-content h1 {

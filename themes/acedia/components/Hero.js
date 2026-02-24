@@ -121,10 +121,10 @@ export const Hero = props => {
         </div>
 
 
-        {/* 文字内容区域 - 按正常文档流布局 */}
+        {/* 文字内容区域 - 居中对齐但不居中定位 */}
         <div className='py-16 md:py-20 lg:py-24 bg-primary'>
           <div className='container px-4 md:px-6 lg:px-8'>
-            <div className='max-w-3xl'>
+            <div className='max-w-3xl mx-auto text-center'>
               <div 
                 className='hero-content wow fadeInUp space-y-6'
                 data-wow-delay='0.3s'>
