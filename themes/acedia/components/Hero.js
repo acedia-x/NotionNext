@@ -102,63 +102,69 @@ export const Hero = props => {
   return (
     <>
       {/* <!-- ====== Hero Section Start --> */}
-      <div id='home' className='relative overflow-hidden bg-primary'>
-        {/* 背景图片容器 */}
-        <div className='w-full h-96 md:h-[500px] lg:h-[600px] relative overflow-hidden'>
-          {!bannerIframe && bannerImage && (
-            <LazyImage
-              priority
-              className='w-full h-full object-cover'
-              src={bannerImage}
-            />
-          )}
-          <iframe
-            src={bannerIframe}
-            className='w-full h-full object-cover'
+      <div id='home' className='h-screen relative overflow-hidden'>
+        {/* 背景图片 */}
+        {!bannerIframe && bannerImage && (
+          <LazyImage
+            priority
+            className='w-full object-cover absolute h-screen left-0 top-0 pointer-events-none'
+            src={bannerImage}
           />
-          {/* 阴影遮罩 */}
-          <div className='absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40' />
+        )}
+        <iframe
+          src={bannerIframe}
+          className='w-full absolute h-screen left-0 top-0 pointer-events-none'
+        />
+        
+        {/* 底部渐变遮罩 */}
+        <div className='h-1/2 w-full absolute left-0 bottom-0 z-10'>
+          <div
+            className='h-full w-full absolute bg-gradient-to-b from-transparent to-black'
+          />
         </div>
 
-
-        {/* 文字内容区域 - 居中对齐但不居中定位 */}
-        <div className='py-16 md:py-20 lg:py-24 bg-primary'>
-          <div className='container px-4 md:px-6 lg:px-8'>
-            <div className='max-w-3xl mx-auto text-center'>
-              <div 
-                className='hero-content wow fadeInUp space-y-6'
-                data-wow-delay='0.3s'>
+        {/* 文字内容 - 直接覆盖在图片上 */}
+        <div className='w-full absolute bottom-0 z-20 pb-15 text-white'>
+          <div className='container -mx-4 flex flex-wrap items-center'>
+            <div className='w-full px-4'>
+              <div
+                className='hero-content wow fadeInUp mx-auto max-w-[780px] text-center'
+                data-wow-delay='0.5s'>
                 {/* 主标题 */}
-                <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight'>
+                <h1 className='mb-6 text-3xl font-bold leading-snug sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]'>
                   <TypewriterText text={heroTitle1} delay={100} />
                 </h1>
                 
                 {/* 副标题 */}
-                <p className='text-lg md:text-xl text-gray-200 font-medium leading-relaxed'>
+                <p className='mx-auto mb-9 max-w-[600px] text-base font-medium sm:text-lg sm:leading-[1.44]'>
                   <TypewriterText text={heroTitle2} delay={100} />
                 </p>
                 
                 {/* 按钮组 */}
                 {(PROXIO_HERO_BUTTON_1_TEXT || PROXIO_HERO_BUTTON_2_TEXT) && (
-                  <div className='flex flex-col sm:flex-row gap-4 mt-8'>
+                  <ul className='mb-10 flex flex-wrap items-center justify-center gap-5'>
                     {PROXIO_HERO_BUTTON_1_TEXT && (
-                      <SmartLink
-                        href={siteConfig('PROXIO_HERO_BUTTON_1_URL', '')}
-                        className='inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-medium text-dark shadow-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:shadow-xl w-full sm:w-auto'>
-                        {PROXIO_HERO_BUTTON_1_TEXT}
-                      </SmartLink>
+                      <li>
+                        <SmartLink
+                          href={siteConfig('PROXIO_HERO_BUTTON_1_URL', '')}
+                          className='inline-flex items-center justify-center rounded-2xl bg-white px-7 py-[14px] text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:bg-gray-2'>
+                          {PROXIO_HERO_BUTTON_1_TEXT}
+                        </SmartLink>
+                      </li>
                     )}
                     {PROXIO_HERO_BUTTON_2_TEXT && (
-                      <SmartLink
-                        href={siteConfig('PROXIO_HERO_BUTTON_2_URL', '')}
-                        className='inline-flex items-center justify-center rounded-xl bg-transparent border-2 border-white px-6 py-3 text-base font-medium text-white shadow-lg transition duration-300 ease-in-out hover:bg-white/10 hover:shadow-xl w-full sm:w-auto'>
-                        {PROXIO_HERO_BUTTON_2_ICON && (
-                          <img className='mr-3 w-5 h-5' src={PROXIO_HERO_BUTTON_2_ICON} alt='' />
-                        )}
-                        {PROXIO_HERO_BUTTON_2_TEXT}
-                      </SmartLink>
+                      <li>
+                        <SmartLink
+                          href={siteConfig('PROXIO_HERO_BUTTON_2_URL', '')}
+                          className='inline-flex items-center justify-center rounded-2xl bg-white px-7 py-[14px] text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:bg-gray-2'>
+                          {PROXIO_HERO_BUTTON_2_ICON && (
+                            <img className='mr-4 w-5' src={PROXIO_HERO_BUTTON_2_ICON} />
+                          )}
+                          {PROXIO_HERO_BUTTON_2_TEXT}
+                        </SmartLink>
+                      </li>
                     )}
-                  </div>
+                  </ul>
                 )}
               </div>
             </div>
