@@ -43,46 +43,20 @@ const Style = () => {
       50% { opacity: 0; }
     }
     
-    // 确保英雄区文字居中 - 强制居中样式
+    // 英雄区内容正常布局样式
     #theme-acedia .hero-content {
-      text-align: center !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
+      display: flex;
+      flex-direction: column;
     }
     
-    #theme-acedia .hero-content h1,
+    #theme-acedia .hero-content h1 {
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
     #theme-acedia .hero-content p {
-      text-align: center !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      width: 100% !important;
-    }
-    
-    // 额外的居中保障
-    #theme-acedia .hero-content > div {
-      width: 100% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-    }
-    
-    #theme-acedia .hero-content .mx-auto {
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    
-    #theme-acedia .hero-content .max-w-[780px] {
-      max-width: 780px !important;
-      width: 100% !important;
-      text-align: center !important;
-    }
-    
-    #theme-acedia .hero-content .max-w-[600px] {
-      max-width: 600px !important;
-      width: 100% !important;
-      text-align: center !important;
+      margin-bottom: 2rem;
+      line-height: 1.6;
     }
     
     /* 白天模式下显示白色文字 */
