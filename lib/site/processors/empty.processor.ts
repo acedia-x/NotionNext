@@ -5,10 +5,10 @@ export function EmptyData(pageId?: string): SiteData {
   return {
     NOTION_CONFIG: {},
     siteInfo: {
-      title: 'NotionNext BLOG',
+      title: 'AcediaX',
       description: '无法获取 Notion 数据',
       pageCover: '/web.jpg',
-      icon: '/avatar.svg',
+      icon: '/logo.svg',
       link: BLOG.LINK
     },
     notice: null,
