@@ -221,15 +221,15 @@ PROXIO_FOOTER_LINKS: [
         href: '/category/devops'
       },
       {
-        title: '云原生',
+        title: 'java',
         href: '/category/cloud-native'
       },
       {
-        title: '系统运维',
+        title: 'python',
         href: '/category/system-administration'
       },
       {
-        title: '自动化',
+        title: 'C/C++',
         href: '/category/automation'
       }
     ]
