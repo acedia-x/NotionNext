@@ -36,6 +36,38 @@ Notion是一个能让效率暴涨的生产力引擎，可以帮你书写文档�
 
 支持多种部署方案
 
+## 新开发者 3 分钟上手
+
+```bash
+# 1) 使用 Node 20（建议先安装 nvm）
+nvm use || nvm install 20.20.0
+
+# 2) 安装 Yarn（若未安装）
+npm i -g yarn
+
+# 3) 安装依赖并启动开发
+yarn
+yarn dev
+```
+
+常用命令：
+
+- 本地开发：`yarn dev`
+- 打包构建：`yarn build`
+- 静态导出：`yarn export`
+
+说明：本地开发保持简单（`yarn` 即可）；锁文件一致性由 CI 严格校验。
+
+## 开发者文档导航
+
+为方便新贡献者快速上手，项目已补充文档导航与协作规范：
+
+- [文档导航入口（中文）](./docs/README.md)
+- [Docs Navigation (English)](./docs/README.en.md)
+- [主题迁移指南（中文）](./docs/THEME_MIGRATION_GUIDE.zh-CN.md)
+- [Theme Migration Guide (English)](./docs/THEME_MIGRATION_GUIDE.md)
+- [贡献入口（英文）](./CONTRIBUTING.md)
+
 ## 预览效果
 
 在线演示：[https://preview.tangly1024.com/](https://preview.tangly1024.com/) ，点击左下角挂件可以切换主题，没找到喜欢的主题？[贡献](/CONTRIBUTING.md)一个吧~
