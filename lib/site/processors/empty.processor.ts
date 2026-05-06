@@ -1,7 +1,7 @@
 import BLOG from '@/blog.config'
 import type { SiteData } from '../site.types'
 
-export function EmptyData(pageId?: string): SiteData {
+export function EmptyData(_pageId?: string): SiteData {
   return {
     NOTION_CONFIG: {},
     siteInfo: {
@@ -22,3 +22,4 @@ export function EmptyData(pageId?: string): SiteData {
     postCount: 0
   }
 }
+
