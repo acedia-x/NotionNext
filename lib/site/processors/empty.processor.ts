@@ -7,7 +7,7 @@ export function EmptyData(pageId?: string): SiteData {
     siteInfo: {
       title: 'AcediaX',
       description: '无法获取 Notion 数据',
-      pageCover: '/web.jpg',
+      pageCover: '/bg_image.jpg',
       icon: '/logo.svg',
       link: BLOG.LINK
     },
